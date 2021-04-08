@@ -18,28 +18,28 @@
         <span>No businessDetails found</span>
     </div>
 
-    <div class="table-responsive" id="entities" *ngIf="businessDetails && businessDetails.length > 0">
+    <!-- <div class="table-responsive" id="entities" *ngIf="businessDetails && businessDetails.length > 0">
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr>
-                    <th scope="col" ><span>ID</span></th>
-                    <th scope="col" ><span>Business Name</span></th>
-                    <th scope="col" ><span>Registered Address</span></th>
-                    <th scope="col" ><span>Description</span></th>
-                    <th scope="col" ><span>Inception Date</span></th>
-                    <th scope="col" ><span>Gstin</span></th>
-                    <th scope="col" ><span>Category</span></th>
-                    <th scope="col" ><span>Sub Category</span></th>
-                    <th scope="col" ><span>Email</span></th>
-                    <th scope="col" ><span>Contact Number</span></th>
-                    <th scope="col" ><span>Managing Person Name</span></th>
-                    <th scope="col" ><span>Logo</span></th>
-                    <th scope="col" ><span>Managing Person Image</span></th>
-                    <th scope="col" ><span>Business Type</span></th>
-                    <th scope="col" ><span>Upi</span></th>
-                    <th scope="col" ><span>Bank Name</span></th>
-                    <th scope="col" ><span>Ifsc Code</span></th>
-                    <th scope="col" ><span>Branch Name</span></th>
+                    <th scope="col"><span>ID</span></th>
+                    <th scope="col"><span>Business Name</span></th>
+                    <th scope="col"><span>Registered Address</span></th>
+                    <th scope="col"><span>Description</span></th>
+                    <th scope="col"><span>Inception Date</span></th>
+                    <th scope="col"><span>Gstin</span></th>
+                    <th scope="col"><span>Category</span></th>
+                    <th scope="col"><span>Sub Category</span></th>
+                    <th scope="col"><span>Email</span></th>
+                    <th scope="col"><span>Contact Number</span></th>
+                    <th scope="col"><span>Managing Person Name</span></th>
+                    <th scope="col"><span>Logo</span></th>
+                    <th scope="col"><span>Managing Person Image</span></th>
+                    <th scope="col"><span>Business Type</span></th>
+                    <th scope="col"><span>Upi</span></th>
+                    <th scope="col"><span>Bank Name</span></th>
+                    <th scope="col"><span>Ifsc Code</span></th>
+                    <th scope="col"><span>Branch Name</span></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -58,13 +58,13 @@
                     <td>{{ businessDetails.managingPersonName }}</td>
                     <td>
                         <a *ngIf="businessDetails.logo" (click)="openFile(businessDetails.logoContentType, businessDetails.logo)">
-                            <img [src]="'data:' + businessDetails.logoContentType + ';base64,' + businessDetails.logo" style="max-height: 30px;" alt="businessDetails image"/>
+                            <img [src]="'data:' + businessDetails.logoContentType + ';base64,' + businessDetails.logo" style="max-height: 30px;" alt="businessDetails image" />
                         </a>
                         <span *ngIf="businessDetails.logo">{{ businessDetails.logoContentType }}, {{ byteSize(businessDetails.logo) }}</span>
                     </td>
                     <td>
                         <a *ngIf="businessDetails.managingPersonImage" (click)="openFile(businessDetails.managingPersonImageContentType, businessDetails.managingPersonImage)">
-                            <img [src]="'data:' + businessDetails.managingPersonImageContentType + ';base64,' + businessDetails.managingPersonImage" style="max-height: 30px;" alt="businessDetails image"/>
+                            <img [src]="'data:' + businessDetails.managingPersonImageContentType + ';base64,' + businessDetails.managingPersonImage" style="max-height: 30px;" alt="businessDetails image" />
                         </a>
                         <span *ngIf="businessDetails.managingPersonImage">{{ businessDetails.managingPersonImageContentType }}, {{ byteSize(businessDetails.managingPersonImage) }}</span>
                     </td>
@@ -75,22 +75,17 @@
                     <td>{{ businessDetails.branchName }}</td>
                     <td class="text-right">
                         <div class="btn-group">
-                            <button type="submit"
-                                    [routerLink]="['/business-details', businessDetails.id, 'view']"
-                                    class="btn btn-info btn-sm">
+                            <button type="submit" [routerLink]="['/business-details', businessDetails.id, 'view']" class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline">View</span>
                             </button>
 
-                            <button type="submit"
-                                    [routerLink]="['/business-details', businessDetails.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
+                            <button type="submit" [routerLink]="['/business-details', businessDetails.id, 'edit']" class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline">Edit</span>
                             </button>
 
-                            <button type="submit" (click)="delete(businessDetails)"
-                                    class="btn btn-danger btn-sm">
+                            <button type="submit" (click)="delete(businessDetails)" class="btn btn-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline">Delete</span>
                             </button>
@@ -99,5 +94,21 @@
                 </tr>
             </tbody>
         </table>
+    </div> -->
+
+    <div class="row" *ngIf="businessDetails && businessDetails.length > 0">
+        <div class="col-md-4 col-sm-6 col-xs-8 col-xs-offset-2" *ngFor="let businessDetails of businessDetails ;trackBy: trackId">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" [src]="'data:' + businessDetails.logoContentType + ';base64,' + businessDetails.logo" alt="Business Logo">
+                <div class="card-body">
+                    <h5 class="card-title"><a [routerLink]="['/business-details', businessDetails.id, 'view']">{{ businessDetails.businessName }}</a></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ businessDetails.category }}</h6>
+                    <p class="card-text">{{ businessDetails.description }}</p>
+                    <a href="#" class="card-link">{{ businessDetails.email }}</a> <br>
+                    <a href="#" class="card-link">{{ businessDetails.contactNumber }}</a> <br>
+                    <p>{{ businessDetails.managingPersonName }}</p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

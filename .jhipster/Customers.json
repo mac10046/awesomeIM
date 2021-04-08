@@ -1,0 +1,63 @@
+{
+  "name": "Customers",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "contactNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "address",
+      "otherEntityRelationshipName": "customers",
+      "relationshipName": "address"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "invoices",
+      "otherEntityRelationshipName": "customers",
+      "relationshipName": "invoices",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "quotes",
+      "otherEntityRelationshipName": "customers",
+      "relationshipName": "quotes",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "orders",
+      "otherEntityRelationshipName": "customers",
+      "relationshipName": "orders",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20210408060036",
+  "entityTableName": "customers",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

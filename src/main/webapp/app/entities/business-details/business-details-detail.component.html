@@ -1,0 +1,104 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="businessDetails">
+            <h2><span>Business Details</span> {{ businessDetails.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Business Name</span></dt>
+                <dd>
+                    <span>{{ businessDetails.businessName }}</span>
+                </dd>
+                <dt><span>Registered Address</span></dt>
+                <dd>
+                    <span>{{ businessDetails.registeredAddress }}</span>
+                </dd>
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{ businessDetails.description }}</span>
+                </dd>
+                <dt><span>Inception Date</span></dt>
+                <dd>
+                    <span>{{ businessDetails.inceptionDate }}</span>
+                </dd>
+                <dt><span>Gstin</span></dt>
+                <dd>
+                    <span>{{ businessDetails.gstin }}</span>
+                </dd>
+                <dt><span>Category</span></dt>
+                <dd>
+                    <span>{{ businessDetails.category }}</span>
+                </dd>
+                <dt><span>Sub Category</span></dt>
+                <dd>
+                    <span>{{ businessDetails.subCategory }}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{ businessDetails.email }}</span>
+                </dd>
+                <dt><span>Contact Number</span></dt>
+                <dd>
+                    <span>{{ businessDetails.contactNumber }}</span>
+                </dd>
+                <dt><span>Managing Person Name</span></dt>
+                <dd>
+                    <span>{{ businessDetails.managingPersonName }}</span>
+                </dd>
+                <dt><span>Logo</span></dt>
+                <dd>
+                    <div *ngIf="businessDetails.logo">
+                        <a (click)="openFile(businessDetails.logoContentType, businessDetails.logo)">
+                            <img [src]="'data:' + businessDetails.logoContentType + ';base64,' + businessDetails.logo" style="max-width: 100%;" alt="businessDetails image"/>
+                        </a>
+                        {{ businessDetails.logoContentType }}, {{ byteSize(businessDetails.logo) }}
+                    </div>
+                </dd>
+                <dt><span>Managing Person Image</span></dt>
+                <dd>
+                    <div *ngIf="businessDetails.managingPersonImage">
+                        <a (click)="openFile(businessDetails.managingPersonImageContentType, businessDetails.managingPersonImage)">
+                            <img [src]="'data:' + businessDetails.managingPersonImageContentType + ';base64,' + businessDetails.managingPersonImage" style="max-width: 100%;" alt="businessDetails image"/>
+                        </a>
+                        {{ businessDetails.managingPersonImageContentType }}, {{ byteSize(businessDetails.managingPersonImage) }}
+                    </div>
+                </dd>
+                <dt><span>Business Type</span></dt>
+                <dd>
+                    <span>{{ businessDetails.businessType }}</span>
+                </dd>
+                <dt><span>Upi</span></dt>
+                <dd>
+                    <span>{{ businessDetails.upi }}</span>
+                </dd>
+                <dt><span>Bank Name</span></dt>
+                <dd>
+                    <span>{{ businessDetails.bankName }}</span>
+                </dd>
+                <dt><span>Ifsc Code</span></dt>
+                <dd>
+                    <span>{{ businessDetails.ifscCode }}</span>
+                </dd>
+                <dt><span>Branch Name</span></dt>
+                <dd>
+                    <span>{{ businessDetails.branchName }}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/business-details', businessDetails.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

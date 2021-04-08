@@ -1,0 +1,77 @@
+<div>
+    <h2 id="page-heading">
+        <span>Order Details</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-order-details" [routerLink]="['/order-details/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Order Details
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="orderDetails?.length === 0">
+        <span>No orderDetails found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="orderDetails && orderDetails.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Description</span></th>
+                    <th scope="col" ><span>Qty</span></th>
+                    <th scope="col" ><span>Price</span></th>
+                    <th scope="col" ><span>Discount</span></th>
+                    <th scope="col" ><span>Taxes</span></th>
+                    <th scope="col" ><span>Is Tax Percent</span></th>
+                    <th scope="col" ><span>Orders</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let orderDetails of orderDetails ;trackBy: trackId">
+                    <td><a [routerLink]="['/order-details', orderDetails.id, 'view']">{{ orderDetails.id }}</a></td>
+                    <td>{{ orderDetails.description }}</td>
+                    <td>{{ orderDetails.qty }}</td>
+                    <td>{{ orderDetails.price }}</td>
+                    <td>{{ orderDetails.discount }}</td>
+                    <td>{{ orderDetails.taxes }}</td>
+                    <td>{{ orderDetails.isTaxPercent }}</td>
+                    <td>
+                        <div *ngIf="orderDetails.orders">
+                            <a [routerLink]="['/orders', orderDetails.orders?.id, 'view']" >{{ orderDetails.orders?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/order-details', orderDetails.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/order-details', orderDetails.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(orderDetails)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

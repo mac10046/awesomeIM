@@ -1,18 +1,23 @@
 package com.sls.awesomeim.config;
 
-import ch.qos.logback.classic.LoggerContext;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.jhipster.config.JHipsterProperties;
+import static io.github.jhipster.config.logging.LoggingUtils.addContextListener;
+import static io.github.jhipster.config.logging.LoggingUtils.addJsonConsoleAppender;
+import static io.github.jhipster.config.logging.LoggingUtils.addLogstashTcpSocketAppender;
+import static io.github.jhipster.config.logging.LoggingUtils.setMetricsMarkerLogbackFilter;
+
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.HashMap;
-import java.util.Map;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
-import static io.github.jhipster.config.logging.LoggingUtils.*;
+import ch.qos.logback.classic.LoggerContext;
+import io.github.jhipster.config.JHipsterProperties;
 
 /*
  * Configures the console and Logstash log appenders from the app properties

@@ -1,0 +1,78 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-shipping-heading">Create or edit a Shipping</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_shipDate">Ship Date</label>
+                    <div class="input-group">
+                        <input id="field_shipDate" type="text" class="form-control" name="shipDate" ngbDatepicker #shipDateDp="ngbDatepicker" formControlName="shipDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="shipDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('shipDate')!.invalid && (editForm.get('shipDate')!.dirty || editForm.get('shipDate')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('shipDate')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_trackingId">Tracking Id</label>
+                    <input type="text" class="form-control" name="trackingId" id="field_trackingId"
+                           formControlName="trackingId"/>
+                    <div *ngIf="editForm.get('trackingId')!.invalid && (editForm.get('trackingId')!.dirty || editForm.get('trackingId')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('trackingId')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_shippers">Shippers</label>
+                    <select class="form-control" id="field_shippers" name="shippers" formControlName="shippers">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="shippersOption.id === editForm.get('shippers')!.value?.id ? editForm.get('shippers')!.value : shippersOption" *ngFor="let shippersOption of shippers; trackBy: trackById">{{ shippersOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_address">Address</label>
+                    <select class="form-control" id="field_address" name="address" formControlName="address">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="addressOption.id === editForm.get('address')!.value?.id ? editForm.get('address')!.value : addressOption" *ngFor="let addressOption of addresses; trackBy: trackById">{{ addressOption.id }}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_orders">Orders</label>
+                    <select class="form-control" id="field_orders" name="orders" formControlName="orders">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ordersOption.id === editForm.get('orders')!.value?.id ? editForm.get('orders')!.value : ordersOption" *ngFor="let ordersOption of orders; trackBy: trackById">{{ ordersOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

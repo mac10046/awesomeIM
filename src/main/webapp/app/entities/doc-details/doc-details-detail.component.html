@@ -1,0 +1,68 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="docDetails">
+            <h2><span>Doc Details</span> {{ docDetails.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Description</span></dt>
+                <dd>
+                    <span>{{ docDetails.description }}</span>
+                </dd>
+                <dt><span>Qty</span></dt>
+                <dd>
+                    <span>{{ docDetails.qty }}</span>
+                </dd>
+                <dt><span>Price</span></dt>
+                <dd>
+                    <span>{{ docDetails.price }}</span>
+                </dd>
+                <dt><span>Discount</span></dt>
+                <dd>
+                    <span>{{ docDetails.discount }}</span>
+                </dd>
+                <dt><span>Taxes</span></dt>
+                <dd>
+                    <span>{{ docDetails.taxes }}</span>
+                </dd>
+                <dt><span>Is Tax Percent</span></dt>
+                <dd>
+                    <span>{{ docDetails.isTaxPercent }}</span>
+                </dd>
+                <dt><span>Products</span></dt>
+                <dd>
+                    <div *ngIf="docDetails.products">
+                        <a [routerLink]="['/products', docDetails.products?.id, 'view']">{{ docDetails.products?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Quotes</span></dt>
+                <dd>
+                    <div *ngIf="docDetails.quotes">
+                        <a [routerLink]="['/quotes', docDetails.quotes?.id, 'view']">{{ docDetails.quotes?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Invoices</span></dt>
+                <dd>
+                    <div *ngIf="docDetails.invoices">
+                        <a [routerLink]="['/invoices', docDetails.invoices?.id, 'view']">{{ docDetails.invoices?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/doc-details', docDetails.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

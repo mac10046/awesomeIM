@@ -1,5 +1,22 @@
 package com.sls.awesomeim.web.rest;
 
+import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.sls.awesomeim.domain.User;
 import com.sls.awesomeim.repository.UserRepository;
 import com.sls.awesomeim.security.SecurityUtils;
@@ -7,19 +24,11 @@ import com.sls.awesomeim.service.MailService;
 import com.sls.awesomeim.service.UserService;
 import com.sls.awesomeim.service.dto.PasswordChangeDTO;
 import com.sls.awesomeim.service.dto.UserDTO;
-import com.sls.awesomeim.web.rest.errors.*;
+import com.sls.awesomeim.web.rest.errors.EmailAlreadyUsedException;
+import com.sls.awesomeim.web.rest.errors.InvalidPasswordException;
+import com.sls.awesomeim.web.rest.errors.LoginAlreadyUsedException;
 import com.sls.awesomeim.web.rest.vm.KeyAndPasswordVM;
 import com.sls.awesomeim.web.rest.vm.ManagedUserVM;
-
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.util.*;
 
 /**
  * REST controller for managing the current user's account.

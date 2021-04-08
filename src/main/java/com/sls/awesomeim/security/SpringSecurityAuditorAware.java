@@ -1,11 +1,11 @@
 package com.sls.awesomeim.security;
 
-import com.sls.awesomeim.config.Constants;
-
 import java.util.Optional;
 
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
+
+import com.sls.awesomeim.config.Constants;
 
 /**
  * Implementation of {@link AuditorAware} based on Spring Security.

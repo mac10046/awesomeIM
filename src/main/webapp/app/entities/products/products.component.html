@@ -1,0 +1,122 @@
+<div>
+    <h2 id="page-heading">
+        <span>Products</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-products" [routerLink]="['/products/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Products
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="products?.length === 0">
+        <span>No products found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="products && products.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
+                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="name"><span>Name</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="description"><span>Description</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="price"><span>Price</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="weight"><span>Weight</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="dimension"><span>Dimension</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="photo1"><span>Photo 1</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="photo2"><span>Photo 2</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="photo3"><span>Photo 3</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="isPhysicalProduct"><span>Is Physical Product</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="maintainInventory"><span>Maintain Inventory</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="businessDetails.id"><span>Business Details</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="cart.id"><span>Cart</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"  jhiSortBy="shipping.id"><span>Shipping</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let products of products ;trackBy: trackId">
+                    <td><a [routerLink]="['/products', products.id, 'view']">{{ products.id }}</a></td>
+                    <td>{{ products.name }}</td>
+                    <td>{{ products.description }}</td>
+                    <td>{{ products.price }}</td>
+                    <td>{{ products.weight }}</td>
+                    <td>{{ products.dimension }}</td>
+                    <td>
+                        <a *ngIf="products.photo1" (click)="openFile(products.photo1ContentType, products.photo1)">
+                            <img [src]="'data:' + products.photo1ContentType + ';base64,' + products.photo1" style="max-height: 30px;" alt="products image"/>
+                        </a>
+                        <span *ngIf="products.photo1">{{ products.photo1ContentType }}, {{ byteSize(products.photo1) }}</span>
+                    </td>
+                    <td>
+                        <a *ngIf="products.photo2" (click)="openFile(products.photo2ContentType, products.photo2)">
+                            <img [src]="'data:' + products.photo2ContentType + ';base64,' + products.photo2" style="max-height: 30px;" alt="products image"/>
+                        </a>
+                        <span *ngIf="products.photo2">{{ products.photo2ContentType }}, {{ byteSize(products.photo2) }}</span>
+                    </td>
+                    <td>
+                        <a *ngIf="products.photo3" (click)="openFile(products.photo3ContentType, products.photo3)">
+                            <img [src]="'data:' + products.photo3ContentType + ';base64,' + products.photo3" style="max-height: 30px;" alt="products image"/>
+                        </a>
+                        <span *ngIf="products.photo3">{{ products.photo3ContentType }}, {{ byteSize(products.photo3) }}</span>
+                    </td>
+                    <td>{{ products.isPhysicalProduct }}</td>
+                    <td>{{ products.maintainInventory }}</td>
+                    <td>
+                        <div *ngIf="products.businessDetails">
+                            <a [routerLink]="['/business-details', products.businessDetails?.id, 'view']" >{{ products.businessDetails?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="products.cart">
+                            <a [routerLink]="['/cart', products.cart?.id, 'view']" >{{ products.cart?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="products.shipping">
+                            <a [routerLink]="['/shipping', products.shipping?.id, 'view']" >{{ products.shipping?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/products', products.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/products', products.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(products)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="products && products.length > 0">
+        <div class="row justify-content-center">
+            <jhi-item-count [page]="page" [total]="totalItems" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+        </div>
+
+        <div class="row justify-content-center">
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="ngbPaginationPage" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage($event)"></ngb-pagination>
+        </div>
+    </div>
+</div>

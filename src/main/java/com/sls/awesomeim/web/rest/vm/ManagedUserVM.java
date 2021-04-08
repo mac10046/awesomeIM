@@ -1,7 +1,8 @@
 package com.sls.awesomeim.web.rest.vm;
 
-import com.sls.awesomeim.service.dto.UserDTO;
 import javax.validation.constraints.Size;
+
+import com.sls.awesomeim.service.dto.UserDTO;
 
 /**
  * View Model extending the UserDTO, which is meant to be used in the user management UI.

@@ -1,15 +1,13 @@
 package com.sls.awesomeim.service;
 
-import com.sls.awesomeim.config.Constants;
-import com.sls.awesomeim.domain.Authority;
-import com.sls.awesomeim.domain.User;
-import com.sls.awesomeim.repository.AuthorityRepository;
-import com.sls.awesomeim.repository.UserRepository;
-import com.sls.awesomeim.security.AuthoritiesConstants;
-import com.sls.awesomeim.security.SecurityUtils;
-import com.sls.awesomeim.service.dto.UserDTO;
-
-import io.github.jhipster.security.RandomUtil;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,10 +19,16 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.Instant;
-import java.time.temporal.ChronoUnit;
-import java.util.*;
-import java.util.stream.Collectors;
+import com.sls.awesomeim.config.Constants;
+import com.sls.awesomeim.domain.Authority;
+import com.sls.awesomeim.domain.User;
+import com.sls.awesomeim.repository.AuthorityRepository;
+import com.sls.awesomeim.repository.UserRepository;
+import com.sls.awesomeim.security.AuthoritiesConstants;
+import com.sls.awesomeim.security.SecurityUtils;
+import com.sls.awesomeim.service.dto.UserDTO;
+
+import io.github.jhipster.security.RandomUtil;
 
 /**
  * Service class for managing users.

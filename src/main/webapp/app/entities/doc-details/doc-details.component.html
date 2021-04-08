@@ -1,0 +1,89 @@
+<div>
+    <h2 id="page-heading">
+        <span>Doc Details</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-doc-details" [routerLink]="['/doc-details/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Doc Details
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="docDetails?.length === 0">
+        <span>No docDetails found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="docDetails && docDetails.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Description</span></th>
+                    <th scope="col" ><span>Qty</span></th>
+                    <th scope="col" ><span>Price</span></th>
+                    <th scope="col" ><span>Discount</span></th>
+                    <th scope="col" ><span>Taxes</span></th>
+                    <th scope="col" ><span>Is Tax Percent</span></th>
+                    <th scope="col" ><span>Products</span></th>
+                    <th scope="col" ><span>Quotes</span></th>
+                    <th scope="col" ><span>Invoices</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let docDetails of docDetails ;trackBy: trackId">
+                    <td><a [routerLink]="['/doc-details', docDetails.id, 'view']">{{ docDetails.id }}</a></td>
+                    <td>{{ docDetails.description }}</td>
+                    <td>{{ docDetails.qty }}</td>
+                    <td>{{ docDetails.price }}</td>
+                    <td>{{ docDetails.discount }}</td>
+                    <td>{{ docDetails.taxes }}</td>
+                    <td>{{ docDetails.isTaxPercent }}</td>
+                    <td>
+                        <div *ngIf="docDetails.products">
+                            <a [routerLink]="['/products', docDetails.products?.id, 'view']" >{{ docDetails.products?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="docDetails.quotes">
+                            <a [routerLink]="['/quotes', docDetails.quotes?.id, 'view']" >{{ docDetails.quotes?.id }}</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div *ngIf="docDetails.invoices">
+                            <a [routerLink]="['/invoices', docDetails.invoices?.id, 'view']" >{{ docDetails.invoices?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/doc-details', docDetails.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/doc-details', docDetails.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(docDetails)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

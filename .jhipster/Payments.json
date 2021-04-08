@@ -1,0 +1,80 @@
+{
+  "name": "Payments",
+  "fields": [
+    {
+      "fieldName": "gatewayId",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "paymentDate",
+      "fieldType": "LocalDate",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "bankTxn",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "txnToken",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "responseTimestamp",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "checksum",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "txnAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "bankName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "responseCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "responseMessage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "result",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "orders",
+      "otherEntityRelationshipName": "payments",
+      "relationshipName": "orders",
+      "otherEntityField": "id",
+      "ownerSide": true
+    }
+  ],
+  "changelogDate": "20210408060136",
+  "entityTableName": "payments",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

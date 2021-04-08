@@ -1,13 +1,16 @@
 package com.sls.awesomeim.service.mapper;
 
-import com.sls.awesomeim.domain.Authority;
-import com.sls.awesomeim.domain.User;
-import com.sls.awesomeim.service.dto.UserDTO;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import com.sls.awesomeim.domain.Authority;
+import com.sls.awesomeim.domain.User;
+import com.sls.awesomeim.service.dto.UserDTO;
 
 /**
  * Mapper for the entity {@link User} and its DTO called {@link UserDTO}.

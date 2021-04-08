@@ -1,0 +1,99 @@
+{
+  "name": "Products",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "price",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "weight",
+      "fieldType": "Double"
+    },
+    {
+      "fieldName": "dimension",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "photo1",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "photo2",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "photo3",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "image"
+    },
+    {
+      "fieldName": "isPhysicalProduct",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "maintainInventory",
+      "fieldType": "Boolean"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "docDetails",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "docDetails",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "taxes",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "taxes",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "businessDetails",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "businessDetails",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "cart",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "cart",
+      "otherEntityField": "id"
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "shipping",
+      "otherEntityRelationshipName": "products",
+      "relationshipName": "shipping",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210408055136",
+  "entityTableName": "products",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

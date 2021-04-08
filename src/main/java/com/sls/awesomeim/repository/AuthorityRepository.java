@@ -1,8 +1,8 @@
 package com.sls.awesomeim.repository;
 
-import com.sls.awesomeim.domain.Authority;
-
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.sls.awesomeim.domain.Authority;
 
 /**
  * Spring Data JPA repository for the {@link Authority} entity.

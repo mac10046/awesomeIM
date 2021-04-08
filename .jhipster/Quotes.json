@@ -1,0 +1,59 @@
+{
+  "name": "Quotes",
+  "fields": [
+    {
+      "fieldName": "gstin",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "quoteDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "terms",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "customers",
+      "otherEntityRelationshipName": "quotes",
+      "relationshipName": "customers",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "businessDetails",
+      "otherEntityRelationshipName": "quotes",
+      "relationshipName": "businessDetails",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "docDetails",
+      "otherEntityRelationshipName": "quotes",
+      "relationshipName": "docDetails"
+    }
+  ],
+  "changelogDate": "20210408060236",
+  "entityTableName": "quotes",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

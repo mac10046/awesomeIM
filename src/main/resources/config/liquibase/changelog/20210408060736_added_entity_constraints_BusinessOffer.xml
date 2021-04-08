@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.9.xsd">
+    <!--
+        Added the constraints for entity BusinessOffer.
+    -->
+    <changeSet id="20210408060736-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="business_opportunity_id"
+                                 baseTableName="business_offer"
+                                 constraintName="fk_business_offer_business_opportunity_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="business_opportunity"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,103 @@
+<div>
+    <h2 id="page-heading">
+        <span>Business Details</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-business-details" [routerLink]="['/business-details/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Business Details
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="businessDetails?.length === 0">
+        <span>No businessDetails found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="businessDetails && businessDetails.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Business Name</span></th>
+                    <th scope="col" ><span>Registered Address</span></th>
+                    <th scope="col" ><span>Description</span></th>
+                    <th scope="col" ><span>Inception Date</span></th>
+                    <th scope="col" ><span>Gstin</span></th>
+                    <th scope="col" ><span>Category</span></th>
+                    <th scope="col" ><span>Sub Category</span></th>
+                    <th scope="col" ><span>Email</span></th>
+                    <th scope="col" ><span>Contact Number</span></th>
+                    <th scope="col" ><span>Managing Person Name</span></th>
+                    <th scope="col" ><span>Logo</span></th>
+                    <th scope="col" ><span>Managing Person Image</span></th>
+                    <th scope="col" ><span>Business Type</span></th>
+                    <th scope="col" ><span>Upi</span></th>
+                    <th scope="col" ><span>Bank Name</span></th>
+                    <th scope="col" ><span>Ifsc Code</span></th>
+                    <th scope="col" ><span>Branch Name</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let businessDetails of businessDetails ;trackBy: trackId">
+                    <td><a [routerLink]="['/business-details', businessDetails.id, 'view']">{{ businessDetails.id }}</a></td>
+                    <td>{{ businessDetails.businessName }}</td>
+                    <td>{{ businessDetails.registeredAddress }}</td>
+                    <td>{{ businessDetails.description }}</td>
+                    <td>{{ businessDetails.inceptionDate | date:'mediumDate' }}</td>
+                    <td>{{ businessDetails.gstin }}</td>
+                    <td>{{ businessDetails.category }}</td>
+                    <td>{{ businessDetails.subCategory }}</td>
+                    <td>{{ businessDetails.email }}</td>
+                    <td>{{ businessDetails.contactNumber }}</td>
+                    <td>{{ businessDetails.managingPersonName }}</td>
+                    <td>
+                        <a *ngIf="businessDetails.logo" (click)="openFile(businessDetails.logoContentType, businessDetails.logo)">
+                            <img [src]="'data:' + businessDetails.logoContentType + ';base64,' + businessDetails.logo" style="max-height: 30px;" alt="businessDetails image"/>
+                        </a>
+                        <span *ngIf="businessDetails.logo">{{ businessDetails.logoContentType }}, {{ byteSize(businessDetails.logo) }}</span>
+                    </td>
+                    <td>
+                        <a *ngIf="businessDetails.managingPersonImage" (click)="openFile(businessDetails.managingPersonImageContentType, businessDetails.managingPersonImage)">
+                            <img [src]="'data:' + businessDetails.managingPersonImageContentType + ';base64,' + businessDetails.managingPersonImage" style="max-height: 30px;" alt="businessDetails image"/>
+                        </a>
+                        <span *ngIf="businessDetails.managingPersonImage">{{ businessDetails.managingPersonImageContentType }}, {{ byteSize(businessDetails.managingPersonImage) }}</span>
+                    </td>
+                    <td>{{ businessDetails.businessType }}</td>
+                    <td>{{ businessDetails.upi }}</td>
+                    <td>{{ businessDetails.bankName }}</td>
+                    <td>{{ businessDetails.ifscCode }}</td>
+                    <td>{{ businessDetails.branchName }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/business-details', businessDetails.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/business-details', businessDetails.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(businessDetails)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

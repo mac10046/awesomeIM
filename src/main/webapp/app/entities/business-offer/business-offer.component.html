@@ -1,0 +1,73 @@
+<div>
+    <h2 id="page-heading">
+        <span>Business Offers</span>
+
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-business-offer" [routerLink]="['/business-offer/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Create a new Business Offer
+            </span>
+        </button>
+    </h2>
+
+    <jhi-alert-error></jhi-alert-error>
+
+    <jhi-alert></jhi-alert>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="businessOffers?.length === 0">
+        <span>No businessOffers found</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="businessOffers && businessOffers.length > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Time</span></th>
+                    <th scope="col" ><span>Message</span></th>
+                    <th scope="col" ><span>Name</span></th>
+                    <th scope="col" ><span>Email</span></th>
+                    <th scope="col" ><span>Business Opportunity</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let businessOffer of businessOffers ;trackBy: trackId">
+                    <td><a [routerLink]="['/business-offer', businessOffer.id, 'view']">{{ businessOffer.id }}</a></td>
+                    <td>{{ businessOffer.time | date:'medium' }}</td>
+                    <td>{{ businessOffer.message }}</td>
+                    <td>{{ businessOffer.name }}</td>
+                    <td>{{ businessOffer.email }}</td>
+                    <td>
+                        <div *ngIf="businessOffer.businessOpportunity">
+                            <a [routerLink]="['/business-opportunity', businessOffer.businessOpportunity?.id, 'view']" >{{ businessOffer.businessOpportunity?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/business-offer', businessOffer.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">View</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/business-offer', businessOffer.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Edit</span>
+                            </button>
+
+                            <button type="submit" (click)="delete(businessOffer)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Delete</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

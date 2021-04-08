@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="orders">
+            <h2><span>Orders</span> {{ orders.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Order Date</span></dt>
+                <dd>
+                    <span>{{ orders.orderDate }}</span>
+                </dd>
+                <dt><span>Is Paid</span></dt>
+                <dd>
+                    <span>{{ orders.isPaid }}</span>
+                </dd>
+                <dt><span>Amount</span></dt>
+                <dd>
+                    <span>{{ orders.amount }}</span>
+                </dd>
+                <dt><span>Customers</span></dt>
+                <dd>
+                    <div *ngIf="orders.customers">
+                        <a [routerLink]="['/customers', orders.customers?.id, 'view']">{{ orders.customers?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/orders', orders.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,123 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-payments-heading">Create or edit a Payments</h2>
+
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+
+                <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_gatewayId">Gateway Id</label>
+                    <input type="text" class="form-control" name="gatewayId" id="field_gatewayId"
+                           formControlName="gatewayId"/>
+                    <div *ngIf="editForm.get('gatewayId')!.invalid && (editForm.get('gatewayId')!.dirty || editForm.get('gatewayId')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('gatewayId')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_paymentDate">Payment Date</label>
+                    <div class="input-group">
+                        <input id="field_paymentDate" type="text" class="form-control" name="paymentDate" ngbDatepicker #paymentDateDp="ngbDatepicker" formControlName="paymentDate"/>
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="paymentDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                        </span>
+                    </div>
+                    <div *ngIf="editForm.get('paymentDate')!.invalid && (editForm.get('paymentDate')!.dirty || editForm.get('paymentDate')!.touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('paymentDate')?.errors?.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_bankTxn">Bank Txn</label>
+                    <input type="text" class="form-control" name="bankTxn" id="field_bankTxn"
+                           formControlName="bankTxn"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_txnToken">Txn Token</label>
+                    <input type="text" class="form-control" name="txnToken" id="field_txnToken"
+                           formControlName="txnToken"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_responseTimestamp">Response Timestamp</label>
+                    <div class="d-flex">
+                        <input id="field_responseTimestamp" type="datetime-local" class="form-control" name="responseTimestamp" formControlName="responseTimestamp" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_checksum">Checksum</label>
+                    <input type="text" class="form-control" name="checksum" id="field_checksum"
+                           formControlName="checksum"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_txnAmount">Txn Amount</label>
+                    <input type="number" class="form-control" name="txnAmount" id="field_txnAmount"
+                           formControlName="txnAmount"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_bankName">Bank Name</label>
+                    <input type="text" class="form-control" name="bankName" id="field_bankName"
+                           formControlName="bankName"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_responseCode">Response Code</label>
+                    <input type="text" class="form-control" name="responseCode" id="field_responseCode"
+                           formControlName="responseCode"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_responseMessage">Response Message</label>
+                    <input type="text" class="form-control" name="responseMessage" id="field_responseMessage"
+                           formControlName="responseMessage"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_result">Result</label>
+                    <input type="text" class="form-control" name="result" id="field_result"
+                           formControlName="result"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_email">Email</label>
+                    <input type="text" class="form-control" name="email" id="field_email"
+                           formControlName="email"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_orders">Orders</label>
+                    <select class="form-control" id="field_orders" name="orders" formControlName="orders">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="ordersOption.id === editForm.get('orders')!.value?.id ? editForm.get('orders')!.value : ordersOption" *ngFor="let ordersOption of orders; trackBy: trackById">{{ ordersOption.id }}</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                    <fa-icon icon="ban"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon icon="save"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

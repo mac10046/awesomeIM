@@ -1,0 +1,61 @@
+{
+  "name": "Address",
+  "fields": [
+    {
+      "fieldName": "street",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "city",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "country",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "zipCode",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "shipping",
+      "otherEntityRelationshipName": "address",
+      "relationshipName": "shipping",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "shippers",
+      "otherEntityRelationshipName": "address",
+      "relationshipName": "shippers",
+      "ownerSide": false
+    },
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "customers",
+      "otherEntityRelationshipName": "address",
+      "relationshipName": "customers",
+      "otherEntityField": "id"
+    }
+  ],
+  "changelogDate": "20210408055736",
+  "entityTableName": "address",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

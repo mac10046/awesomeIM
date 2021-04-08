@@ -1,0 +1,60 @@
+{
+  "name": "Orders",
+  "fields": [
+    {
+      "fieldName": "orderDate",
+      "fieldType": "Instant",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "isPaid",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "amount",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "customers",
+      "otherEntityRelationshipName": "orders",
+      "relationshipName": "customers",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "shipping",
+      "otherEntityRelationshipName": "orders",
+      "relationshipName": "shipping"
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "orderDetails",
+      "otherEntityRelationshipName": "orders",
+      "relationshipName": "orderDetails"
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "payments",
+      "otherEntityRelationshipName": "orders",
+      "relationshipName": "payments",
+      "ownerSide": false
+    }
+  ],
+  "changelogDate": "20210408055836",
+  "entityTableName": "orders",
+  "dto": "no",
+  "pagination": "pagination",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

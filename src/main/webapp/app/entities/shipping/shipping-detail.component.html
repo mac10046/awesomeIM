@@ -1,0 +1,52 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="shipping">
+            <h2><span>Shipping</span> {{ shipping.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Ship Date</span></dt>
+                <dd>
+                    <span>{{ shipping.shipDate }}</span>
+                </dd>
+                <dt><span>Tracking Id</span></dt>
+                <dd>
+                    <span>{{ shipping.trackingId }}</span>
+                </dd>
+                <dt><span>Shippers</span></dt>
+                <dd>
+                    <div *ngIf="shipping.shippers">
+                        <a [routerLink]="['/shippers', shipping.shippers?.id, 'view']">{{ shipping.shippers?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Address</span></dt>
+                <dd>
+                    <div *ngIf="shipping.address">
+                        <a [routerLink]="['/address', shipping.address?.id, 'view']">{{ shipping.address?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Orders</span></dt>
+                <dd>
+                    <div *ngIf="shipping.orders">
+                        <a [routerLink]="['/orders', shipping.orders?.id, 'view']">{{ shipping.orders?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/shipping', shipping.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

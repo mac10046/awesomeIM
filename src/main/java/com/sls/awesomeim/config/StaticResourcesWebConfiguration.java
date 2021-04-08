@@ -1,7 +1,7 @@
 package com.sls.awesomeim.config;
 
-import io.github.jhipster.config.JHipsterConstants;
-import io.github.jhipster.config.JHipsterProperties;
+import java.util.concurrent.TimeUnit;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.http.CacheControl;
@@ -9,7 +9,8 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistra
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.util.concurrent.TimeUnit;
+import io.github.jhipster.config.JHipsterConstants;
+import io.github.jhipster.config.JHipsterProperties;
 
 @Configuration
 @Profile({JHipsterConstants.SPRING_PROFILE_PRODUCTION})

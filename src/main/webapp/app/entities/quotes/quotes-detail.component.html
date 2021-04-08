@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="quotes">
+            <h2><span>Quotes</span> {{ quotes.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Gstin</span></dt>
+                <dd>
+                    <span>{{ quotes.gstin }}</span>
+                </dd>
+                <dt><span>Quote Date</span></dt>
+                <dd>
+                    <span>{{ quotes.quoteDate }}</span>
+                </dd>
+                <dt><span>Terms</span></dt>
+                <dd>
+                    <span>{{ quotes.terms }}</span>
+                </dd>
+                <dt><span>Amount</span></dt>
+                <dd>
+                    <span>{{ quotes.amount }}</span>
+                </dd>
+                <dt><span>Customers</span></dt>
+                <dd>
+                    <div *ngIf="quotes.customers">
+                        <a [routerLink]="['/customers', quotes.customers?.id, 'view']">{{ quotes.customers?.id }}</a>
+                    </div>
+                </dd>
+                <dt><span>Business Details</span></dt>
+                <dd>
+                    <div *ngIf="quotes.businessDetails">
+                        <a [routerLink]="['/business-details', quotes.businessDetails?.id, 'view']">{{ quotes.businessDetails?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/quotes', quotes.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

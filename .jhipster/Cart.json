@@ -1,0 +1,31 @@
+{
+  "name": "Cart",
+  "fields": [],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "coupons",
+      "otherEntityRelationshipName": "cart",
+      "relationshipName": "coupons",
+      "otherEntityField": "id",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "products",
+      "otherEntityRelationshipName": "cart",
+      "relationshipName": "products"
+    }
+  ],
+  "changelogDate": "20210408055336",
+  "entityTableName": "cart",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

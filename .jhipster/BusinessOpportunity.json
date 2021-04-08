@@ -1,0 +1,46 @@
+{
+  "name": "BusinessOpportunity",
+  "fields": [
+    {
+      "fieldName": "investmentAmount",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": [
+        "required"
+      ]
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "planDescription",
+      "fieldType": "String",
+      "fieldValidateRules": [
+        "required"
+      ]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-many",
+      "otherEntityName": "businessOffer",
+      "otherEntityRelationshipName": "businessOpportunity",
+      "relationshipName": "businessOffer"
+    }
+  ],
+  "changelogDate": "20210408060636",
+  "entityTableName": "business_opportunity",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "clientRootFolder": "",
+  "applications": "*"
+}

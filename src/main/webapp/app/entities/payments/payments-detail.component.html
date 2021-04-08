@@ -1,0 +1,80 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="payments">
+            <h2><span>Payments</span> {{ payments.id }}</h2>
+
+            <hr>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <dl class="row-md jh-entity-details">
+                <dt><span>Gateway Id</span></dt>
+                <dd>
+                    <span>{{ payments.gatewayId }}</span>
+                </dd>
+                <dt><span>Payment Date</span></dt>
+                <dd>
+                    <span>{{ payments.paymentDate }}</span>
+                </dd>
+                <dt><span>Bank Txn</span></dt>
+                <dd>
+                    <span>{{ payments.bankTxn }}</span>
+                </dd>
+                <dt><span>Txn Token</span></dt>
+                <dd>
+                    <span>{{ payments.txnToken }}</span>
+                </dd>
+                <dt><span>Response Timestamp</span></dt>
+                <dd>
+                    <span>{{ payments.responseTimestamp }}</span>
+                </dd>
+                <dt><span>Checksum</span></dt>
+                <dd>
+                    <span>{{ payments.checksum }}</span>
+                </dd>
+                <dt><span>Txn Amount</span></dt>
+                <dd>
+                    <span>{{ payments.txnAmount }}</span>
+                </dd>
+                <dt><span>Bank Name</span></dt>
+                <dd>
+                    <span>{{ payments.bankName }}</span>
+                </dd>
+                <dt><span>Response Code</span></dt>
+                <dd>
+                    <span>{{ payments.responseCode }}</span>
+                </dd>
+                <dt><span>Response Message</span></dt>
+                <dd>
+                    <span>{{ payments.responseMessage }}</span>
+                </dd>
+                <dt><span>Result</span></dt>
+                <dd>
+                    <span>{{ payments.result }}</span>
+                </dd>
+                <dt><span>Email</span></dt>
+                <dd>
+                    <span>{{ payments.email }}</span>
+                </dd>
+                <dt><span>Orders</span></dt>
+                <dd>
+                    <div *ngIf="payments.orders">
+                        <a [routerLink]="['/orders', payments.orders?.id, 'view']">{{ payments.orders?.id }}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/payments', payments.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

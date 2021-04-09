@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-invoices-heading">Create or edit a Invoices</h2>
+            <h2 id="jhi-invoices-heading">Invoices</h2>
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
@@ -13,22 +13,19 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_gstin">Gstin</label>
-                    <input type="text" class="form-control" name="gstin" id="field_gstin"
-                           formControlName="gstin"/>
+                    <input type="text" class="form-control" name="gstin" id="field_gstin" formControlName="gstin" />
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_invoiceDate">Invoice Date</label>
                     <div class="d-flex">
-                        <input id="field_invoiceDate" type="datetime-local" class="form-control" name="invoiceDate" formControlName="invoiceDate" placeholder="YYYY-MM-DD HH:mm"/>
+                        <input id="field_invoiceDate" type="datetime-local" class="form-control" name="invoiceDate" formControlName="invoiceDate" placeholder="YYYY-MM-DD HH:mm" />
                     </div>
                     <div *ngIf="editForm.get('invoiceDate')!.invalid && (editForm.get('invoiceDate')!.dirty || editForm.get('invoiceDate')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('invoiceDate')?.errors?.required">
+                        <small class="form-text text-danger" *ngIf="editForm.get('invoiceDate')?.errors?.required">
                         This field is required.
                         </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.get('invoiceDate')?.errors?.ZonedDateTimelocal">
+                        <small class="form-text text-danger" [hidden]="!editForm.get('invoiceDate')?.errors?.ZonedDateTimelocal">
                             This field should be a date and time.
                         </small>
                     </div>
@@ -36,20 +33,17 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_terms">Terms</label>
-                    <input type="text" class="form-control" name="terms" id="field_terms"
-                           formControlName="terms"/>
+                    <input type="text" class="form-control" name="terms" id="field_terms" formControlName="terms" />
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_isPaid">Is Paid</label>
-                    <input type="checkbox" class="form-control" name="isPaid" id="field_isPaid"
-                           formControlName="isPaid"/>
+                    <input type="checkbox" class="form-control" name="isPaid" id="field_isPaid" formControlName="isPaid" />
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_amount">Amount</label>
-                    <input type="number" class="form-control" name="amount" id="field_amount"
-                           formControlName="amount"/>
+                    <input type="number" class="form-control" name="amount" id="field_amount" formControlName="amount" />
                 </div>
 
                 <div class="form-group">

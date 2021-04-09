@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-shippers-heading">Create or edit a Shippers</h2>
+            <h2 id="jhi-shippers-heading">Shippers</h2>
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
@@ -13,11 +13,9 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_name">Name</label>
-                    <input type="text" class="form-control" name="name" id="field_name"
-                           formControlName="name"/>
+                    <input type="text" class="form-control" name="name" id="field_name" formControlName="name" />
                     <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('name')?.errors?.required">
+                        <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required">
                         This field is required.
                         </small>
                     </div>
@@ -25,8 +23,7 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_contactNumber">Contact Number</label>
-                    <input type="text" class="form-control" name="contactNumber" id="field_contactNumber"
-                           formControlName="contactNumber"/>
+                    <input type="text" class="form-control" name="contactNumber" id="field_contactNumber" formControlName="contactNumber" />
                 </div>
 
                 <div class="form-group">

@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-taxes-heading">Create or edit a Taxes</h2>
+            <h2 id="jhi-taxes-heading">Taxes</h2>
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
@@ -13,11 +13,9 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_name">Name</label>
-                    <input type="text" class="form-control" name="name" id="field_name"
-                           formControlName="name"/>
+                    <input type="text" class="form-control" name="name" id="field_name" formControlName="name" />
                     <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('name')?.errors?.required">
+                        <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required">
                         This field is required.
                         </small>
                     </div>
@@ -25,11 +23,9 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_isPercent">Is Percent</label>
-                    <input type="checkbox" class="form-control" name="isPercent" id="field_isPercent"
-                           formControlName="isPercent"/>
+                    <input type="checkbox" class="form-control" name="isPercent" id="field_isPercent" formControlName="isPercent" />
                     <div *ngIf="editForm.get('isPercent')!.invalid && (editForm.get('isPercent')!.dirty || editForm.get('isPercent')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('isPercent')?.errors?.required">
+                        <small class="form-text text-danger" *ngIf="editForm.get('isPercent')?.errors?.required">
                         This field is required.
                         </small>
                     </div>
@@ -37,15 +33,12 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_figure">Figure</label>
-                    <input type="number" class="form-control" name="figure" id="field_figure"
-                           formControlName="figure"/>
+                    <input type="number" class="form-control" name="figure" id="field_figure" formControlName="figure" />
                     <div *ngIf="editForm.get('figure')!.invalid && (editForm.get('figure')!.dirty || editForm.get('figure')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('figure')?.errors?.required">
+                        <small class="form-text text-danger" *ngIf="editForm.get('figure')?.errors?.required">
                         This field is required.
                         </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.get('figure')?.errors?.number">
+                        <small class="form-text text-danger" [hidden]="!editForm.get('figure')?.errors?.number">
                             This field should be a number.
                         </small>
                     </div>
@@ -53,8 +46,7 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_description">Description</label>
-                    <input type="text" class="form-control" name="description" id="field_description"
-                           formControlName="description"/>
+                    <input type="text" class="form-control" name="description" id="field_description" formControlName="description" />
                 </div>
 
                 <div class="form-group">

@@ -24,7 +24,7 @@ describe('Service Tests', () => {
       httpMock = injector.get(HttpTestingController);
       currentDate = moment();
 
-      elemDefault = new BusinessOpportunity(0, 0, currentDate, currentDate, 'AAAAAAA');
+      elemDefault = new BusinessOpportunity(0, 'AAAAAAA', 0, currentDate, currentDate, 'AAAAAAA');
     });
 
     describe('Service methods', () => {
@@ -72,6 +72,7 @@ describe('Service Tests', () => {
       it('should update a BusinessOpportunity', () => {
         const returnedFromService = Object.assign(
           {
+            title: 'BBBBBB',
             investmentAmount: 1,
             startDate: currentDate.format(DATE_FORMAT),
             endDate: currentDate.format(DATE_FORMAT),
@@ -98,6 +99,7 @@ describe('Service Tests', () => {
       it('should return a list of BusinessOpportunity', () => {
         const returnedFromService = Object.assign(
           {
+            title: 'BBBBBB',
             investmentAmount: 1,
             startDate: currentDate.format(DATE_FORMAT),
             endDate: currentDate.format(DATE_FORMAT),

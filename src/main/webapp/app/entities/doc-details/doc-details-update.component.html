@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-doc-details-heading">Create or edit a Doc Details</h2>
+            <h2 id="jhi-doc-details-heading">Doc Details</h2>
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
@@ -13,21 +13,17 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_description">Description</label>
-                    <input type="text" class="form-control" name="description" id="field_description"
-                           formControlName="description"/>
+                    <input type="text" class="form-control" name="description" id="field_description" formControlName="description" />
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_qty">Qty</label>
-                    <input type="number" class="form-control" name="qty" id="field_qty"
-                           formControlName="qty"/>
+                    <input type="number" class="form-control" name="qty" id="field_qty" formControlName="qty" />
                     <div *ngIf="editForm.get('qty')!.invalid && (editForm.get('qty')!.dirty || editForm.get('qty')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('qty')?.errors?.required">
+                        <small class="form-text text-danger" *ngIf="editForm.get('qty')?.errors?.required">
                         This field is required.
                         </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.get('qty')?.errors?.number">
+                        <small class="form-text text-danger" [hidden]="!editForm.get('qty')?.errors?.number">
                             This field should be a number.
                         </small>
                     </div>
@@ -35,15 +31,12 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_price">Price</label>
-                    <input type="number" class="form-control" name="price" id="field_price"
-                           formControlName="price"/>
+                    <input type="number" class="form-control" name="price" id="field_price" formControlName="price" />
                     <div *ngIf="editForm.get('price')!.invalid && (editForm.get('price')!.dirty || editForm.get('price')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('price')?.errors?.required">
+                        <small class="form-text text-danger" *ngIf="editForm.get('price')?.errors?.required">
                         This field is required.
                         </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.get('price')?.errors?.number">
+                        <small class="form-text text-danger" [hidden]="!editForm.get('price')?.errors?.number">
                             This field should be a number.
                         </small>
                     </div>
@@ -51,20 +44,17 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_discount">Discount</label>
-                    <input type="number" class="form-control" name="discount" id="field_discount"
-                           formControlName="discount"/>
+                    <input type="number" class="form-control" name="discount" id="field_discount" formControlName="discount" />
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_taxes">Taxes</label>
-                    <input type="number" class="form-control" name="taxes" id="field_taxes"
-                           formControlName="taxes"/>
+                    <input type="number" class="form-control" name="taxes" id="field_taxes" formControlName="taxes" />
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_isTaxPercent">Is Tax Percent</label>
-                    <input type="number" class="form-control" name="isTaxPercent" id="field_isTaxPercent"
-                           formControlName="isTaxPercent"/>
+                    <input type="number" class="form-control" name="isTaxPercent" id="field_isTaxPercent" formControlName="isTaxPercent" />
                 </div>
 
                 <div class="form-group">

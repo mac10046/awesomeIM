@@ -9,6 +9,8 @@ import { JhiDataUtils, JhiFileLoadError, JhiEventManager, JhiEventWithContent } 
 import { IBusinessDetails, BusinessDetails } from 'app/shared/model/business-details.model';
 import { BusinessDetailsService } from './business-details.service';
 import { AlertError } from 'app/shared/alert/alert-error.model';
+import { IUser } from 'app/core/user/user.model';
+import { UserService } from 'app/core/user/user.service';
 
 @Component({
   selector: 'jhi-business-details-update',
@@ -16,6 +18,7 @@ import { AlertError } from 'app/shared/alert/alert-error.model';
 })
 export class BusinessDetailsUpdateComponent implements OnInit {
   isSaving = false;
+  users: IUser[] = [];
   inceptionDateDp: any;
 
   editForm = this.fb.group({
@@ -39,12 +42,14 @@ export class BusinessDetailsUpdateComponent implements OnInit {
     bankName: [],
     ifscCode: [],
     branchName: [],
+    user: [],
   });
 
   constructor(
     protected dataUtils: JhiDataUtils,
     protected eventManager: JhiEventManager,
     protected businessDetailsService: BusinessDetailsService,
+    protected userService: UserService,
     protected elementRef: ElementRef,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
@@ -53,6 +58,8 @@ export class BusinessDetailsUpdateComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.data.subscribe(({ businessDetails }) => {
       this.updateForm(businessDetails);
+
+      this.userService.query().subscribe((res: HttpResponse<IUser[]>) => (this.users = res.body || []));
     });
   }
 
@@ -78,6 +85,7 @@ export class BusinessDetailsUpdateComponent implements OnInit {
       bankName: businessDetails.bankName,
       ifscCode: businessDetails.ifscCode,
       branchName: businessDetails.branchName,
+      user: businessDetails.user,
     });
   }
 
@@ -144,6 +152,7 @@ export class BusinessDetailsUpdateComponent implements OnInit {
       bankName: this.editForm.get(['bankName'])!.value,
       ifscCode: this.editForm.get(['ifscCode'])!.value,
       branchName: this.editForm.get(['branchName'])!.value,
+      user: this.editForm.get(['user'])!.value,
     };
   }
 
@@ -161,5 +170,9 @@ export class BusinessDetailsUpdateComponent implements OnInit {
 
   protected onSaveError(): void {
     this.isSaving = false;
+  }
+
+  trackById(index: number, item: IUser): any {
+    return item.id;
   }
 }

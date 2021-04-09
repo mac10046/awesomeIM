@@ -16,6 +16,9 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
+            <column name="title" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
             <column name="investment_amount" type="decimal(21,2)">
                 <constraints nullable="false" />
             </column>
@@ -51,6 +54,7 @@
                   separator=";"
                   tableName="business_opportunity">
             <column name="id" type="numeric"/>
+            <column name="title" type="string"/>
             <column name="investment_amount" type="numeric"/>
             <column name="start_date" type="date"/>
             <column name="end_date" type="date"/>

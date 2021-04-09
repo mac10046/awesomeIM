@@ -1,6 +1,7 @@
 import { Moment } from 'moment';
 import { IProducts } from 'app/shared/model/products.model';
 import { IReviews } from 'app/shared/model/reviews.model';
+import { IUser } from 'app/core/user/user.model';
 import { IQuotes } from 'app/shared/model/quotes.model';
 import { IInvoices } from 'app/shared/model/invoices.model';
 import { BusinessType } from 'app/shared/model/enumerations/business-type.model';
@@ -28,6 +29,7 @@ export interface IBusinessDetails {
   branchName?: string;
   products?: IProducts[];
   reviews?: IReviews[];
+  user?: IUser;
   quotes?: IQuotes;
   invoices?: IInvoices;
 }
@@ -56,6 +58,7 @@ export class BusinessDetails implements IBusinessDetails {
     public branchName?: string,
     public products?: IProducts[],
     public reviews?: IReviews[],
+    public user?: IUser,
     public quotes?: IQuotes,
     public invoices?: IInvoices
   ) {}

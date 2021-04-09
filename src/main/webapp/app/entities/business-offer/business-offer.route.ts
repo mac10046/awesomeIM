@@ -69,6 +69,18 @@ export const businessOfferRoute: Routes = [
     canActivate: [UserRouteAccessService],
   },
   {
+    path: 'new/:id',
+    component: BusinessOfferUpdateComponent,
+    resolve: {
+      businessOffer: BusinessOfferResolve,
+    },
+    data: {
+      authorities: [Authority.USER],
+      pageTitle: 'BusinessOffers',
+    },
+    canActivate: [UserRouteAccessService],
+  },
+  {
     path: ':id/edit',
     component: BusinessOfferUpdateComponent,
     resolve: {

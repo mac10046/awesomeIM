@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-reviews-heading">Create or edit a Reviews</h2>
+            <h2 id="jhi-reviews-heading">Reviews</h2>
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
@@ -13,11 +13,9 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_name">Name</label>
-                    <input type="text" class="form-control" name="name" id="field_name"
-                           formControlName="name"/>
+                    <input type="text" class="form-control" name="name" id="field_name" formControlName="name" />
                     <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('name')?.errors?.required">
+                        <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required">
                         This field is required.
                         </small>
                     </div>
@@ -25,11 +23,9 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_message">Message</label>
-                    <input type="text" class="form-control" name="message" id="field_message"
-                           formControlName="message"/>
+                    <input type="text" class="form-control" name="message" id="field_message" formControlName="message" />
                     <div *ngIf="editForm.get('message')!.invalid && (editForm.get('message')!.dirty || editForm.get('message')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('message')?.errors?.required">
+                        <small class="form-text text-danger" *ngIf="editForm.get('message')?.errors?.required">
                         This field is required.
                         </small>
                     </div>
@@ -38,15 +34,13 @@
                 <div class="form-group">
                     <label class="form-control-label" for="field_reviewDate">Review Date</label>
                     <div class="d-flex">
-                        <input id="field_reviewDate" type="datetime-local" class="form-control" name="reviewDate" formControlName="reviewDate" placeholder="YYYY-MM-DD HH:mm"/>
+                        <input id="field_reviewDate" type="datetime-local" class="form-control" name="reviewDate" formControlName="reviewDate" placeholder="YYYY-MM-DD HH:mm" />
                     </div>
                     <div *ngIf="editForm.get('reviewDate')!.invalid && (editForm.get('reviewDate')!.dirty || editForm.get('reviewDate')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('reviewDate')?.errors?.required">
+                        <small class="form-text text-danger" *ngIf="editForm.get('reviewDate')?.errors?.required">
                         This field is required.
                         </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.get('reviewDate')?.errors?.ZonedDateTimelocal">
+                        <small class="form-text text-danger" [hidden]="!editForm.get('reviewDate')?.errors?.ZonedDateTimelocal">
                             This field should be a date and time.
                         </small>
                     </div>
@@ -54,15 +48,12 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_rating">Rating</label>
-                    <input type="number" class="form-control" name="rating" id="field_rating"
-                           formControlName="rating"/>
+                    <input type="number" class="form-control" name="rating" id="field_rating" formControlName="rating" />
                     <div *ngIf="editForm.get('rating')!.invalid && (editForm.get('rating')!.dirty || editForm.get('rating')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('rating')?.errors?.required">
+                        <small class="form-text text-danger" *ngIf="editForm.get('rating')?.errors?.required">
                         This field is required.
                         </small>
-                        <small class="form-text text-danger"
-                            [hidden]="!editForm.get('rating')?.errors?.number">
+                        <small class="form-text text-danger" [hidden]="!editForm.get('rating')?.errors?.number">
                             This field should be a number.
                         </small>
                     </div>
@@ -70,15 +61,14 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_designation">Designation</label>
-                    <input type="text" class="form-control" name="designation" id="field_designation"
-                           formControlName="designation"/>
+                    <input type="text" class="form-control" name="designation" id="field_designation" formControlName="designation" />
                 </div>
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_businessDetails">Business Details</label>
                     <select class="form-control" id="field_businessDetails" name="businessDetails" formControlName="businessDetails">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="businessDetailsOption.id === editForm.get('businessDetails')!.value?.id ? editForm.get('businessDetails')!.value : businessDetailsOption" *ngFor="let businessDetailsOption of businessdetails; trackBy: trackById">{{ businessDetailsOption.id }}</option>
+                        <option [ngValue]="businessDetailsOption.id === editForm.get('businessDetails')!.value?.id ? editForm.get('businessDetails')!.value : businessDetailsOption" *ngFor="let businessDetailsOption of businessdetails; trackBy: trackById">{{ businessDetailsOption.businessName }}</option>
                     </select>
                 </div>
             </div>

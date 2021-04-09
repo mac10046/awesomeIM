@@ -19,6 +19,7 @@ export class BusinessOpportunityUpdateComponent implements OnInit {
 
   editForm = this.fb.group({
     id: [],
+    title: [],
     investmentAmount: [null, [Validators.required]],
     startDate: [],
     endDate: [],
@@ -40,6 +41,7 @@ export class BusinessOpportunityUpdateComponent implements OnInit {
   updateForm(businessOpportunity: IBusinessOpportunity): void {
     this.editForm.patchValue({
       id: businessOpportunity.id,
+      title: businessOpportunity.title,
       investmentAmount: businessOpportunity.investmentAmount,
       startDate: businessOpportunity.startDate,
       endDate: businessOpportunity.endDate,
@@ -65,6 +67,7 @@ export class BusinessOpportunityUpdateComponent implements OnInit {
     return {
       ...new BusinessOpportunity(),
       id: this.editForm.get(['id'])!.value,
+      title: this.editForm.get(['title'])!.value,
       investmentAmount: this.editForm.get(['investmentAmount'])!.value,
       startDate: this.editForm.get(['startDate'])!.value,
       endDate: this.editForm.get(['endDate'])!.value,

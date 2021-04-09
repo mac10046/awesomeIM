@@ -2,6 +2,10 @@
   "name": "BusinessOpportunity",
   "fields": [
     {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
       "fieldName": "investmentAmount",
       "fieldType": "BigDecimal",
       "fieldValidateRules": [

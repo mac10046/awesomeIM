@@ -52,7 +52,7 @@
                     <label class="form-control-label" for="field_businessOpportunity">Business Opportunity</label>
                     <select class="form-control" id="field_businessOpportunity" name="businessOpportunity" formControlName="businessOpportunity">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="businessOpportunityOption.id === editForm.get('businessOpportunity')!.value?.id ? editForm.get('businessOpportunity')!.value : businessOpportunityOption" *ngFor="let businessOpportunityOption of businessopportunities; trackBy: trackById">{{ businessOpportunityOption.id }}</option>
+                        <option [ngValue]="businessOpportunityOption.id === editForm.get('businessOpportunity')!.value?.id ? editForm.get('businessOpportunity')!.value : businessOpportunityOption" *ngFor="let businessOpportunityOption of businessopportunities; trackBy: trackById">{{ businessOpportunityOption.title }}</option>
                     </select>
                 </div>
             </div>

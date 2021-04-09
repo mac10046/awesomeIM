@@ -1,24 +1,16 @@
 package com.sls.awesomeim.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sls.awesomeim.domain.enumeration.BusinessType;
 
 /**
@@ -109,6 +101,10 @@ public class BusinessDetails implements Serializable {
 
     @OneToMany(mappedBy = "businessDetails")
     private Set<Reviews> reviews = new HashSet<>();
+
+    @ManyToOne
+    @JsonIgnoreProperties(value = "businessDetails", allowSetters = true)
+    private User user;
 
     @OneToOne(mappedBy = "businessDetails")
     @JsonIgnore
@@ -422,6 +418,19 @@ public class BusinessDetails implements Serializable {
 
     public void setReviews(Set<Reviews> reviews) {
         this.reviews = reviews;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public BusinessDetails user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Quotes getQuotes() {

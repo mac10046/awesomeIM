@@ -3,6 +3,7 @@ import { IBusinessOffer } from 'app/shared/model/business-offer.model';
 
 export interface IBusinessOpportunity {
   id?: number;
+  title?: string;
   investmentAmount?: number;
   startDate?: Moment;
   endDate?: Moment;
@@ -13,6 +14,7 @@ export interface IBusinessOpportunity {
 export class BusinessOpportunity implements IBusinessOpportunity {
   constructor(
     public id?: number,
+    public title?: string,
     public investmentAmount?: number,
     public startDate?: Moment,
     public endDate?: Moment,

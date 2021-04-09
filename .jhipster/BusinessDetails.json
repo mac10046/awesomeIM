@@ -117,6 +117,13 @@
       "relationshipName": "reviews"
     },
     {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "user",
+      "otherEntityRelationshipName": "businessDetails",
+      "relationshipName": "user",
+      "otherEntityField": "id"
+    },
+    {
       "relationshipType": "one-to-one",
       "otherEntityName": "quotes",
       "otherEntityRelationshipName": "businessDetails",

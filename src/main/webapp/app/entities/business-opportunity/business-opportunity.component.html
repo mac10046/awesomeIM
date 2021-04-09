@@ -23,6 +23,7 @@
             <thead>
                 <tr>
                     <th scope="col"><span>ID</span></th>
+                    <th scope="col"><span>Title</span></th>
                     <th scope="col"><span>Investment Amount</span></th>
                     <th scope="col"><span>Start Date</span></th>
                     <th scope="col"><span>End Date</span></th>
@@ -33,6 +34,7 @@
             <tbody>
                 <tr *ngFor="let businessOpportunity of businessOpportunities ;trackBy: trackId">
                     <td><a [routerLink]="['/business-opportunity', businessOpportunity.id, 'view']">{{ businessOpportunity.id }}</a></td>
+                    <td>{{ businessOpportunity.title }}</td>
                     <td>{{ businessOpportunity.investmentAmount }}</td>
                     <td>{{ businessOpportunity.startDate | date:'mediumDate' }}</td>
                     <td>{{ businessOpportunity.endDate | date:'mediumDate' }}</td>
@@ -43,9 +45,10 @@
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline">View</span>
                             </button>
+
                             <button type="submit" [routerLink]="['/business-offer', 'new']" class="btn btn-info btn-sm">
-                                <fa-icon icon="gift"></fa-icon>
-                                <span class="d-none d-md-inline">Make a Offer</span>
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">Make Offer</span>
                             </button>
 
                             <button type="submit" [routerLink]="['/business-opportunity', businessOpportunity.id, 'edit']" class="btn btn-primary btn-sm">

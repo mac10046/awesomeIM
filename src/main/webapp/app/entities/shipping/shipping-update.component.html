@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-shipping-heading">Create or edit a Shipping</h2>
+            <h2 id="jhi-shipping-heading">Shipping</h2>
 
             <div>
                 <jhi-alert-error></jhi-alert-error>
@@ -14,14 +14,13 @@
                 <div class="form-group">
                     <label class="form-control-label" for="field_shipDate">Ship Date</label>
                     <div class="input-group">
-                        <input id="field_shipDate" type="text" class="form-control" name="shipDate" ngbDatepicker #shipDateDp="ngbDatepicker" formControlName="shipDate"/>
+                        <input id="field_shipDate" type="text" class="form-control" name="shipDate" ngbDatepicker #shipDateDp="ngbDatepicker" formControlName="shipDate" />
                         <span class="input-group-append">
                             <button type="button" class="btn btn-secondary" (click)="shipDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
                         </span>
                     </div>
                     <div *ngIf="editForm.get('shipDate')!.invalid && (editForm.get('shipDate')!.dirty || editForm.get('shipDate')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('shipDate')?.errors?.required">
+                        <small class="form-text text-danger" *ngIf="editForm.get('shipDate')?.errors?.required">
                         This field is required.
                         </small>
                     </div>
@@ -29,11 +28,9 @@
 
                 <div class="form-group">
                     <label class="form-control-label" for="field_trackingId">Tracking Id</label>
-                    <input type="text" class="form-control" name="trackingId" id="field_trackingId"
-                           formControlName="trackingId"/>
+                    <input type="text" class="form-control" name="trackingId" id="field_trackingId" formControlName="trackingId" />
                     <div *ngIf="editForm.get('trackingId')!.invalid && (editForm.get('trackingId')!.dirty || editForm.get('trackingId')!.touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('trackingId')?.errors?.required">
+                        <small class="form-text text-danger" *ngIf="editForm.get('trackingId')?.errors?.required">
                         This field is required.
                         </small>
                     </div>

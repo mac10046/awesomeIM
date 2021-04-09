@@ -32,6 +32,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WithMockUser
 public class BusinessOpportunityResourceIT {
 
+    private static final String DEFAULT_TITLE = "AAAAAAAAAA";
+    private static final String UPDATED_TITLE = "BBBBBBBBBB";
+
     private static final BigDecimal DEFAULT_INVESTMENT_AMOUNT = new BigDecimal(1);
     private static final BigDecimal UPDATED_INVESTMENT_AMOUNT = new BigDecimal(2);
 
@@ -63,6 +66,7 @@ public class BusinessOpportunityResourceIT {
      */
     public static BusinessOpportunity createEntity(EntityManager em) {
         BusinessOpportunity businessOpportunity = new BusinessOpportunity()
+            .title(DEFAULT_TITLE)
             .investmentAmount(DEFAULT_INVESTMENT_AMOUNT)
             .startDate(DEFAULT_START_DATE)
             .endDate(DEFAULT_END_DATE)
@@ -77,6 +81,7 @@ public class BusinessOpportunityResourceIT {
      */
     public static BusinessOpportunity createUpdatedEntity(EntityManager em) {
         BusinessOpportunity businessOpportunity = new BusinessOpportunity()
+            .title(UPDATED_TITLE)
             .investmentAmount(UPDATED_INVESTMENT_AMOUNT)
             .startDate(UPDATED_START_DATE)
             .endDate(UPDATED_END_DATE)
@@ -103,6 +108,7 @@ public class BusinessOpportunityResourceIT {
         List<BusinessOpportunity> businessOpportunityList = businessOpportunityRepository.findAll();
         assertThat(businessOpportunityList).hasSize(databaseSizeBeforeCreate + 1);
         BusinessOpportunity testBusinessOpportunity = businessOpportunityList.get(businessOpportunityList.size() - 1);
+        assertThat(testBusinessOpportunity.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testBusinessOpportunity.getInvestmentAmount()).isEqualTo(DEFAULT_INVESTMENT_AMOUNT);
         assertThat(testBusinessOpportunity.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testBusinessOpportunity.getEndDate()).isEqualTo(DEFAULT_END_DATE);
@@ -178,6 +184,7 @@ public class BusinessOpportunityResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(businessOpportunity.getId().intValue())))
+            .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE)))
             .andExpect(jsonPath("$.[*].investmentAmount").value(hasItem(DEFAULT_INVESTMENT_AMOUNT.intValue())))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(DEFAULT_START_DATE.toString())))
             .andExpect(jsonPath("$.[*].endDate").value(hasItem(DEFAULT_END_DATE.toString())))
@@ -195,6 +202,7 @@ public class BusinessOpportunityResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(businessOpportunity.getId().intValue()))
+            .andExpect(jsonPath("$.title").value(DEFAULT_TITLE))
             .andExpect(jsonPath("$.investmentAmount").value(DEFAULT_INVESTMENT_AMOUNT.intValue()))
             .andExpect(jsonPath("$.startDate").value(DEFAULT_START_DATE.toString()))
             .andExpect(jsonPath("$.endDate").value(DEFAULT_END_DATE.toString()))
@@ -221,6 +229,7 @@ public class BusinessOpportunityResourceIT {
         // Disconnect from session so that the updates on updatedBusinessOpportunity are not directly saved in db
         em.detach(updatedBusinessOpportunity);
         updatedBusinessOpportunity
+            .title(UPDATED_TITLE)
             .investmentAmount(UPDATED_INVESTMENT_AMOUNT)
             .startDate(UPDATED_START_DATE)
             .endDate(UPDATED_END_DATE)
@@ -235,6 +244,7 @@ public class BusinessOpportunityResourceIT {
         List<BusinessOpportunity> businessOpportunityList = businessOpportunityRepository.findAll();
         assertThat(businessOpportunityList).hasSize(databaseSizeBeforeUpdate);
         BusinessOpportunity testBusinessOpportunity = businessOpportunityList.get(businessOpportunityList.size() - 1);
+        assertThat(testBusinessOpportunity.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testBusinessOpportunity.getInvestmentAmount()).isEqualTo(UPDATED_INVESTMENT_AMOUNT);
         assertThat(testBusinessOpportunity.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testBusinessOpportunity.getEndDate()).isEqualTo(UPDATED_END_DATE);

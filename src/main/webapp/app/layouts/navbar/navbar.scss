@@ -23,17 +23,14 @@ Navbar
   .dropdown-item.active:hover {
     background-color: $dark;
   }
-
   ul.navbar-nav {
     .nav-item {
       margin-left: 0.5em;
     }
   }
-
   a.nav-link {
     font-weight: 400;
   }
-
   .navbar-toggler {
     &:hover {
       color: $navbar-dark-hover-color;
@@ -44,11 +41,16 @@ Navbar
 /* ==========================================================================
 Logo styles
 ========================================================================== */
+
 .logo-img {
   height: 45px;
   width: 45px;
   display: inline-block;
   vertical-align: middle;
-  background: url('../../../content/images/logo-jhipster.png') no-repeat center center;
+  background: url('../../../content/images/stall-icon.png') no-repeat center center;
   background-size: contain;
+}
+
+.navbar-brand {
+  text-align: center;
 }

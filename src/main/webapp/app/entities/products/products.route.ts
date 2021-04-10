@@ -39,11 +39,11 @@ export const productsRoute: Routes = [
     path: '',
     component: ProductsComponent,
     data: {
-      authorities: [Authority.USER],
+      // authorities: [Authority.USER],
       defaultSort: 'id,asc',
       pageTitle: 'Products',
     },
-    canActivate: [UserRouteAccessService],
+    // canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
@@ -52,10 +52,10 @@ export const productsRoute: Routes = [
       products: ProductsResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      // authorities: [Authority.USER],
       pageTitle: 'Products',
     },
-    canActivate: [UserRouteAccessService],
+    // canActivate: [UserRouteAccessService],
   },
   {
     path: 'new',

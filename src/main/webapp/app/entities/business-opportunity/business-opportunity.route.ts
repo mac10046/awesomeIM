@@ -39,10 +39,10 @@ export const businessOpportunityRoute: Routes = [
     path: '',
     component: BusinessOpportunityComponent,
     data: {
-      authorities: [Authority.USER],
+      // authorities: [Authority.USER],
       pageTitle: 'BusinessOpportunities',
     },
-    canActivate: [UserRouteAccessService],
+    // canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
@@ -51,10 +51,10 @@ export const businessOpportunityRoute: Routes = [
       businessOpportunity: BusinessOpportunityResolve,
     },
     data: {
-      authorities: [Authority.USER],
+      // authorities: [Authority.USER],
       pageTitle: 'BusinessOpportunities',
     },
-    canActivate: [UserRouteAccessService],
+    // canActivate: [UserRouteAccessService],
   },
   {
     path: 'new',

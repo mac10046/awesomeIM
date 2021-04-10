@@ -9,10 +9,26 @@
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-                <a class="nav-link" routerLink="/" (click)="collapseNavbar()">
+                <a class="nav-link" routerLink="/business-details" (click)="collapseNavbar()">
                     <span>
                         <fa-icon icon="home"></fa-icon>
-                        <span>Home</span>
+                        <span>Market</span>
+                    </span>
+                </a>
+            </li>
+            <li *ngSwitchCase="false" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a class="nav-link" routerLink="/products" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="tasks"></fa-icon>
+                        <span>Products</span>
+                    </span>
+                </a>
+            </li>
+            <li *ngSwitchCase="false" class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+                <a class="nav-link" routerLink="/business-opportunities" (click)="collapseNavbar()">
+                    <span>
+                        <fa-icon icon="asterisk"></fa-icon>
+                        <span>Business Opportunities</span>
                     </span>
                 </a>
             </li>
@@ -22,7 +38,7 @@
                     <span>
                         <fa-icon icon="th-list"></fa-icon>
                         <span>
-                            Entities
+                            Manage
                         </span>
                     </span>
                 </a>

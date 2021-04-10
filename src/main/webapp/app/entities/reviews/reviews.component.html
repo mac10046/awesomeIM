@@ -2,12 +2,12 @@
     <h2 id="page-heading">
         <span>Reviews</span>
 
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-reviews" [routerLink]="['/reviews/new']">
+        <!-- <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-reviews" [routerLink]="['/reviews/new']">
             <fa-icon icon="plus"></fa-icon>
             <span>
             Create a new Reviews
             </span>
-        </button>
+        </button> -->
     </h2>
 
     <jhi-alert-error></jhi-alert-error>
@@ -52,15 +52,15 @@
                                 <span class="d-none d-md-inline">View</span>
                             </button>
 
-                            <button type="submit" [routerLink]="['/reviews', reviews.id, 'edit']" class="btn btn-primary btn-sm">
+                            <!-- <button type="submit" [routerLink]="['/reviews', reviews.id, 'edit']" class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline">Edit</span>
-                            </button>
+                            </button> -->
 
-                            <button type="submit" (click)="delete(reviews)" class="btn btn-danger btn-sm">
+                            <!-- <button type="submit" (click)="delete(reviews)" class="btn btn-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline">Delete</span>
-                            </button>
+                            </button> -->
                         </div>
                     </td>
                 </tr>

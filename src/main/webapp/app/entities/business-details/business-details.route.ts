@@ -42,7 +42,7 @@ export const businessDetailsRoute: Routes = [
       authorities: [Authority.USER],
       pageTitle: 'BusinessDetails',
     },
-    canActivate: [UserRouteAccessService],
+    // canActivate: [UserRouteAccessService],
   },
   {
     path: ':id/view',
@@ -54,7 +54,7 @@ export const businessDetailsRoute: Routes = [
       authorities: [Authority.USER],
       pageTitle: 'BusinessDetails',
     },
-    canActivate: [UserRouteAccessService],
+    // canActivate: [UserRouteAccessService],
   },
   {
     path: 'new',

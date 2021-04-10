@@ -20,7 +20,7 @@
                 <dd>
                     <span>{{ invoices.terms }}</span>
                 </dd>
-                <dt><span>Is Paid</span></dt>
+                <dt><span>Paid</span></dt>
                 <dd>
                     <span>{{ invoices.isPaid }}</span>
                 </dd>
@@ -42,15 +42,11 @@
                 </dd>
             </dl>
 
-            <button type="submit"
-                    (click)="previousState()"
-                    class="btn btn-info">
+            <button type="submit" (click)="previousState()" class="btn btn-info">
                 <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
             </button>
 
-            <button type="button"
-                    [routerLink]="['/invoices', invoices.id, 'edit']"
-                    class="btn btn-primary">
+            <button type="button" [routerLink]="['/invoices', invoices.id, 'edit']" class="btn btn-primary">
                 <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
             </button>
         </div>

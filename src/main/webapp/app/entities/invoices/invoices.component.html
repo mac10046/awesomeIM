@@ -22,53 +22,64 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" [callback]="loadPage.bind(this)">
-                    <th scope="col"  jhiSortBy="id"><span>ID</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="gstin"><span>Gstin</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="invoiceDate"><span>Invoice Date</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="terms"><span>Terms</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="isPaid"><span>Is Paid</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="amount"><span>Amount</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="customers.id"><span>Customers</span> <fa-icon icon="sort"></fa-icon></th>
-                    <th scope="col"  jhiSortBy="businessDetails.id"><span>Business Details</span> <fa-icon icon="sort"></fa-icon></th>
+                    <th scope="col" jhiSortBy="id"><span>ID</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="invoiceDate"><span>Invoice Date</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="gstin"><span>Gstin</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="terms"><span>Terms</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="isPaid"><span>Paid</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="amount"><span>Amount</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="customers.id"><span>Customers</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
+                    <th scope="col" jhiSortBy="businessDetails.id"><span>Business Details</span>
+                        <fa-icon icon="sort"></fa-icon>
+                    </th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let invoices of invoices ;trackBy: trackId">
                     <td><a [routerLink]="['/invoices', invoices.id, 'view']">{{ invoices.id }}</a></td>
-                    <td>{{ invoices.gstin }}</td>
                     <td>{{ invoices.invoiceDate | date:'medium' }}</td>
+                    <td>{{ invoices.gstin }}</td>
                     <td>{{ invoices.terms }}</td>
                     <td>{{ invoices.isPaid }}</td>
                     <td>{{ invoices.amount }}</td>
                     <td>
                         <div *ngIf="invoices.customers">
-                            <a [routerLink]="['/customers', invoices.customers?.id, 'view']" >{{ invoices.customers?.id }}</a>
+                            <a [routerLink]="['/customers', invoices.customers?.id, 'view']">{{ invoices.customers?.name }}</a>
                         </div>
                     </td>
-                    <td>
+                    <!-- <td>
                         <div *ngIf="invoices.businessDetails">
                             <a [routerLink]="['/business-details', invoices.businessDetails?.id, 'view']" >{{ invoices.businessDetails?.id }}</a>
                         </div>
-                    </td>
+                    </td> -->
                     <td class="text-right">
                         <div class="btn-group">
-                            <button type="submit"
-                                    [routerLink]="['/invoices', invoices.id, 'view']"
-                                    class="btn btn-info btn-sm">
+                            <button type="submit" [routerLink]="['/invoices', invoices.id, 'view']" class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline">View</span>
                             </button>
 
-                            <button type="submit"
-                                    [routerLink]="['/invoices', invoices.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
+                            <button type="submit" [routerLink]="['/invoices', invoices.id, 'edit']" class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline">Edit</span>
                             </button>
 
-                            <button type="submit" (click)="delete(invoices)"
-                                    class="btn btn-danger btn-sm">
+                            <button type="submit" (click)="delete(invoices)" class="btn btn-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline">Delete</span>
                             </button>

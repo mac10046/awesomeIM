@@ -48,7 +48,7 @@ export class BusinessOfferUpdateComponent implements OnInit {
       this.businessOpportunityService.query().subscribe((res: HttpResponse<IBusinessOpportunity[]>) => {
         this.businessopportunities = res.body || [];
         if (businessOffer.id) {
-          this.businessopportunities = this.businessopportunities.find(offer => offer.id === businessOffer.id);
+          this.businessopportunities = this.businessopportunities.filter(offer => offer.id === businessOffer.id);
         }
       });
     });

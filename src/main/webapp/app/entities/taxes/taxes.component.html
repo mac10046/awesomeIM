@@ -22,12 +22,12 @@
         <table class="table table-striped" aria-describedby="page-heading">
             <thead>
                 <tr>
-                    <th scope="col" ><span>ID</span></th>
-                    <th scope="col" ><span>Name</span></th>
-                    <th scope="col" ><span>Is Percent</span></th>
-                    <th scope="col" ><span>Figure</span></th>
-                    <th scope="col" ><span>Description</span></th>
-                    <th scope="col" ><span>Products</span></th>
+                    <th scope="col"><span>ID</span></th>
+                    <th scope="col"><span>Name</span></th>
+                    <th scope="col"><span>Is Percent</span></th>
+                    <th scope="col"><span>Figure</span></th>
+                    <th scope="col"><span>Description</span></th>
+                    <!-- <th scope="col" ><span>Products</span></th> -->
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -38,29 +38,24 @@
                     <td>{{ taxes.isPercent }}</td>
                     <td>{{ taxes.figure }}</td>
                     <td>{{ taxes.description }}</td>
-                    <td>
+                    <!-- <td>
                         <div *ngIf="taxes.products">
                             <a [routerLink]="['/products', taxes.products?.id, 'view']" >{{ taxes.products?.id }}</a>
                         </div>
-                    </td>
+                    </td> -->
                     <td class="text-right">
                         <div class="btn-group">
-                            <button type="submit"
-                                    [routerLink]="['/taxes', taxes.id, 'view']"
-                                    class="btn btn-info btn-sm">
+                            <button type="submit" [routerLink]="['/taxes', taxes.id, 'view']" class="btn btn-info btn-sm">
                                 <fa-icon icon="eye"></fa-icon>
                                 <span class="d-none d-md-inline">View</span>
                             </button>
 
-                            <button type="submit"
-                                    [routerLink]="['/taxes', taxes.id, 'edit']"
-                                    class="btn btn-primary btn-sm">
+                            <button type="submit" [routerLink]="['/taxes', taxes.id, 'edit']" class="btn btn-primary btn-sm">
                                 <fa-icon icon="pencil-alt"></fa-icon>
                                 <span class="d-none d-md-inline">Edit</span>
                             </button>
 
-                            <button type="submit" (click)="delete(taxes)"
-                                    class="btn btn-danger btn-sm">
+                            <button type="submit" (click)="delete(taxes)" class="btn btn-danger btn-sm">
                                 <fa-icon icon="times"></fa-icon>
                                 <span class="d-none d-md-inline">Delete</span>
                             </button>

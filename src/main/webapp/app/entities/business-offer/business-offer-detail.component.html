@@ -27,20 +27,16 @@
                 <dt><span>Business Opportunity</span></dt>
                 <dd>
                     <div *ngIf="businessOffer.businessOpportunity">
-                        <a [routerLink]="['/business-opportunity', businessOffer.businessOpportunity?.id, 'view']">{{ businessOffer.businessOpportunity?.id }}</a>
+                        <a [routerLink]="['/business-opportunity', businessOffer.businessOpportunity?.id, 'view']">{{ businessOffer.businessOpportunity?.title }}</a>
                     </div>
                 </dd>
             </dl>
 
-            <button type="submit"
-                    (click)="previousState()"
-                    class="btn btn-info">
+            <button type="submit" (click)="previousState()" class="btn btn-info">
                 <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
             </button>
 
-            <button type="button"
-                    [routerLink]="['/business-offer', businessOffer.id, 'edit']"
-                    class="btn btn-primary">
+            <button type="button" [routerLink]="['/business-offer', businessOffer.id, 'edit']" class="btn btn-primary">
                 <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
             </button>
         </div>

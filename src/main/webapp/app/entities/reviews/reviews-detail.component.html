@@ -18,7 +18,7 @@
                 </dd>
                 <dt><span>Review Date</span></dt>
                 <dd>
-                    <span>{{ reviews.reviewDate }}</span>
+                    <span>{{ reviews.reviewDate | date}}</span>
                 </dd>
                 <dt><span>Rating</span></dt>
                 <dd>
@@ -31,22 +31,18 @@
                 <dt><span>Business Details</span></dt>
                 <dd>
                     <div *ngIf="reviews.businessDetails">
-                        <a [routerLink]="['/business-details', reviews.businessDetails?.id, 'view']">{{ reviews.businessDetails?.id }}</a>
+                        <a [routerLink]="['/business-details', reviews.businessDetails?.id, 'view']">{{ reviews.businessDetails?.businessName }}</a>
                     </div>
                 </dd>
             </dl>
 
-            <button type="submit"
-                    (click)="previousState()"
-                    class="btn btn-info">
+            <button type="submit" (click)="previousState()" class="btn btn-info">
                 <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
             </button>
 
-            <button type="button"
-                    [routerLink]="['/reviews', reviews.id, 'edit']"
-                    class="btn btn-primary">
+            <!-- <button type="button" [routerLink]="['/reviews', reviews.id, 'edit']" class="btn btn-primary">
                 <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
-            </button>
+            </button> -->
         </div>
     </div>
 </div>
